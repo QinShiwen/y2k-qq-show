@@ -1,0 +1,32 @@
+[
+  {
+    "id": "vest-shorts",
+    "slot": "outfit",
+    "name": "Tank and Shorts",
+    "thumb": "/asset/clothes/vest-shorts/thumb.png",
+    "frames": {
+      "idle": {
+        "down": "/asset/clothes/vest-shorts/idle_down.png",
+        "right": "/asset/clothes/vest-shorts/idle_right.png",
+        "up": "/asset/clothes/vest-shorts/idle_up.png",
+        "left": "/asset/clothes/vest-shorts/idle_left.png"
+      },
+      "walk": {}
+    }
+  },
+  {
+    "id": "brown-jacket",
+    "slot": "outfit",
+    "name": "Brown Jacket",
+    "thumb": "/asset/clothes/brown-jacket/thumb.png",
+    "frames": {
+      "idle": {
+        "down": "/asset/clothes/brown-jacket/idle_down.png",
+        "right": "/asset/clothes/brown-jacket/idle_right.png",
+        "up": "/asset/clothes/brown-jacket/idle_up.png",
+        "left": "/asset/clothes/brown-jacket/idle_left.png"
+      },
+      "walk": {}
+    }
+  }
+]

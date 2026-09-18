@@ -1,0 +1,17 @@
+[
+  {
+    "id": "fair",
+    "slot": "skin",
+    "name": "Fair",
+    "thumb": "/asset/skin/fair/thumb.png",
+    "frames": {
+      "idle": {
+        "down": "/asset/skin/fair/idle_down.png",
+        "right": "/asset/skin/fair/idle_right.png",
+        "up": "/asset/skin/fair/idle_up.png",
+        "left": "/asset/skin/fair/idle_left.png"
+      },
+      "walk": {}
+    }
+  }
+]
