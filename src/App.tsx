@@ -1,5 +1,5 @@
-import { CharacterDresser } from "./components/CharacterDresser"
+import DressingPage from "./pages/DressingPage/DressingPage"
 
 export default function App() {
-  return <CharacterDresser />
+  return <DressingPage />
 }
