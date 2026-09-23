@@ -1,4 +1,4 @@
-import { CostumeType, Gender, OverlayLayout } from "./costumes";
+import { CostumeType, Gender, type OverlayLayout } from "./costumes";
 
 export const layerZ = {
     base: 1,
