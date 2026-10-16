@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1080" viewBox="0 0 960 1080">
+  <rect width="960" height="1080" fill="#f4f1ea"/>
+  <text x="64" y="48" fill="#1f1d1a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="22" font-weight="650">大文件每次只传一段，断了从缺的段接着传</text>
+  <text x="64" y="76" fill="#5e584e" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">对象存储放每一段的字节。数据库只放一张清单，记下哪些段号已经到了。</text>
+
+  <g>
+    <rect x="64" y="104" width="832" height="136" rx="12" fill="#fffcf8" stroke="#e7e1d6"/>
+    <text x="88" y="136" fill="#1f1d1a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="16" font-weight="650">1. 算出这个文件有多少段</text>
+    <rect x="808" y="120" width="72" height="22" rx="11" fill="#e7f0ff"/>
+    <text x="844" y="135" text-anchor="middle" fill="#1d4ed8" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="650">浏览器</text>
+    <text x="88" y="168" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">用户选中 video.mp4，约 3.1GB。按每段 5MB，一共 640 段。</text>
+    <text x="88" y="190" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">第 1 段是开头 5MB，第 2 段是紧接着的 5MB，最后一段通常更短。</text>
+    <text x="88" y="212" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">原文件不拆开。上传时只读出这一段的字节。</text>
+  </g>
+  <line x1="480" y1="242" x2="480" y2="258" stroke="#9a9286" stroke-width="1.5"/>
+  <polygon points="474,256 486,256 480,266" fill="#9a9286"/>
+
+  <g>
+    <rect x="64" y="274" width="832" height="136" rx="12" fill="#fffcf8" stroke="#e7e1d6"/>
+    <text x="88" y="306" fill="#1f1d1a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="16" font-weight="650">2. 先放一张空清单，并留出存放位置</text>
+    <rect x="676" y="290" width="68" height="22" rx="11" fill="#f0eaff"/>
+    <text x="710" y="305" text-anchor="middle" fill="#6d28d9" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="650">服务器</text>
+    <rect x="750" y="290" width="68" height="22" rx="11" fill="#fff4e5"/>
+    <text x="784" y="305" text-anchor="middle" fill="#c2410c" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="650">数据库</text>
+    <rect x="824" y="290" width="56" height="22" rx="11" fill="#e7f6ef"/>
+    <text x="852" y="305" text-anchor="middle" fill="#047857" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="650">存储</text>
+    <text x="88" y="338" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">浏览器说：我要传 video.mp4，一共这么大。</text>
+    <text x="88" y="360" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">数据库新建清单：编号 UPLOAD-12345，已到达的段号是空的。</text>
+    <text x="88" y="382" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">对象存储留出这个编号。这时还没有视频字节。</text>
+  </g>
+  <line x1="480" y1="412" x2="480" y2="428" stroke="#9a9286" stroke-width="1.5"/>
+  <polygon points="474,426 486,426 480,436" fill="#9a9286"/>
+
+  <g>
+    <rect x="64" y="444" width="832" height="114" rx="12" fill="#fffcf8" stroke="#e7e1d6"/>
+    <text x="88" y="476" fill="#1f1d1a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="16" font-weight="650">3. 每次送出一段字节</text>
+    <rect x="808" y="460" width="72" height="22" rx="11" fill="#e7f0ff"/>
+    <text x="844" y="475" text-anchor="middle" fill="#1d4ed8" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="650">浏览器</text>
+    <text x="88" y="508" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">读出第 n 段，连同编号 UPLOAD-12345 和段号 n 一起发出。</text>
+    <text x="88" y="530" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">大约 4 段同时传。段号就是这段在原文件中的顺序。</text>
+  </g>
+  <line x1="480" y1="560" x2="480" y2="576" stroke="#9a9286" stroke-width="1.5"/>
+  <polygon points="474,574 486,574 480,584" fill="#9a9286"/>
+
+  <g>
+    <rect x="64" y="592" width="832" height="158" rx="12" fill="#fffcf8" stroke="#e7e1d6"/>
+    <text x="88" y="624" fill="#1f1d1a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="16" font-weight="650">4. 字节放下，清单打勾</text>
+    <rect x="676" y="608" width="68" height="22" rx="11" fill="#f0eaff"/>
+    <text x="710" y="623" text-anchor="middle" fill="#6d28d9" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="650">服务器</text>
+    <rect x="750" y="608" width="68" height="22" rx="11" fill="#fff4e5"/>
+    <text x="784" y="623" text-anchor="middle" fill="#c2410c" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="650">数据库</text>
+    <rect x="824" y="608" width="56" height="22" rx="11" fill="#e7f6ef"/>
+    <text x="852" y="623" text-anchor="middle" fill="#047857" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="650">存储</text>
+    <text x="88" y="656" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">这段字节写在 UPLOAD-12345/n。再传第 n 段，还是写在这里。</text>
+    <text x="88" y="678" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">存储交回一个校验值，表示存下来的内容和发出去的一致。</text>
+    <text x="88" y="700" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">清单加上 n。清单只是段号，例如 [1, 2, 3, 4, 5]。</text>
+    <text x="88" y="722" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">同一个 n 再来一次，清单里仍然只有一个 n。</text>
+  </g>
+
+  <line x1="480" y1="752" x2="480" y2="784" stroke="#9a9286" stroke-width="1.5"/>
+  <line x1="288" y1="784" x2="712" y2="784" stroke="#9a9286" stroke-width="1.5"/>
+  <line x1="288" y1="784" x2="288" y2="820" stroke="#9a9286" stroke-width="1.5"/>
+  <polygon points="282,816 294,816 288,828" fill="#9a9286"/>
+  <line x1="712" y1="784" x2="712" y2="820" stroke="#9a9286" stroke-width="1.5"/>
+  <polygon points="706,816 718,816 712,828" fill="#9a9286"/>
+  <text x="300" y="814" fill="#5e584e" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="650">1 到 640 都在</text>
+  <text x="700" y="814" text-anchor="end" fill="#5e584e" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="650">某一段断了</text>
+
+  <g>
+    <rect x="64" y="844" width="448" height="180" rx="12" fill="#fffcf8" stroke="#e7e1d6"/>
+    <text x="88" y="876" fill="#1f1d1a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="16" font-weight="650">5. 按顺序接回原文件</text>
+    <text x="88" y="908" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">核对清单：段号 1 到 640 都在。</text>
+    <text x="88" y="930" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">对象存储按 1, 2, 3... 把各段接起来。</text>
+    <text x="88" y="952" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">接好的那一份就是 video.mp4。</text>
+    <text x="88" y="974" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">数据库记下路径，这条上传改为完成。</text>
+  </g>
+
+  <g>
+    <rect x="528" y="844" width="368" height="180" rx="12" fill="#fff8ee" stroke="#f0d7b0"/>
+    <text x="552" y="876" fill="#1f1d1a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="16" font-weight="650">只补缺的段</text>
+    <text x="552" y="908" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">这次请求没了，清单还在。</text>
+    <text x="552" y="930" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">再要一次清单，只发缺的段号。</text>
+    <text x="552" y="952" fill="#3f3a33" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">缺的段补齐后，走左边接文件。</text>
+  </g>
+</svg>
